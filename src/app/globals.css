@@ -15,8 +15,8 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  /* color: var(--foreground); */
+  /* background: var(--background); */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -25,3 +25,22 @@ body {
     text-wrap: balance;
   }
 }
+
+/* In your globals.css or a specific CSS module */
+code {
+  /* background-color: #f5f5f5; */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* pre {
+  background-color: #2d2d2d; 
+  color: #ffffff;            
+  padding: 20px;
+  border-radius: 5px;
+  overflow-x: auto;          
+  font-size: 14px;
+  font-family: 'Courier New', Courier, monospace;
+} */

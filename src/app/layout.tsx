@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { ThemeProvider } from "@/components/theme-provider"
+
+import dynamic from "next/dynamic"; // Import dynamic to handle client-side component
+
+// import { MenuBar } from '@/components/layout/MenuBar';
+const MenuBar = dynamic(() => import("@/components/layout/MenuBar"), { ssr: false });
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -24,11 +31,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
+    <html lang="en" suppressHydrationWarning={true}>
+      <body 
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >  
+          <MenuBar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
