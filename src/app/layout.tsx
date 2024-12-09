@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/Theme-provider"
 
 import dynamic from "next/dynamic"; // Import dynamic to handle client-side component
 
