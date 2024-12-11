@@ -9,6 +9,21 @@ import { LuFlipHorizontal2, LuFlipVertical2  } from "react-icons/lu";
 import CropperJS from 'cropperjs';
 import CropperInstance  from "cropperjs";
 
+const imageFileTypes = [
+  { value: "jpeg", label: "JPEG" },
+  { value: "png", label: "PNG" },
+  { value: "svg", label: "SVG" },
+  { value: "webp", label: "WEBP" },
+  { value: "gif", label: "GIF" },
+  { value: "bmp", label: "BMP" },
+  { value: "tiff", label: "TIFF" },
+  { value: "avif", label: "AVIF" },
+  { value: "heic", label: "HEIC" },
+  { value: "raw", label: "RAW" },
+  // { value: "ico", label: "ICO" },
+];
+
+
 interface ImageCropperProps {
   src: string;
   onSave: (croppedImage: string) => void;
@@ -17,7 +32,7 @@ interface ImageCropperProps {
 const ImageConverter: React.FC = () => {
   const [convertedImage, setConvertedImage] = useState<string | null>(null);
   const [outputFormat, setOutputFormat] = useState<string>('png');
-  const [inputFormat, setInputFormat] = useState<string>('png');
+  const [inputFormat, setInputFormat] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   const [svg, setSvg] = useState<string | null>(null);
 
@@ -52,7 +67,7 @@ const ImageConverter: React.FC = () => {
 
     if (file) {
       if (file.size > MAX_FILE_SIZE) {
-        setError('File size must be less than 2MB.');
+        setError('File size must be less than 5MB.');
         setConvertedImage(null);
         return;
       } else {
@@ -386,18 +401,27 @@ const ImageConverter: React.FC = () => {
           Convert
         </p>
         <select value={inputFormat} onChange={(e) => setInputFormat(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-90 className=0 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option value="jpeg">JPEG</option>
-          <option value="png">PNG</option>
-          <option value="svg">SVG</option>
+          <option value="">none</option>          
+          {imageFileTypes.map((type) => (
+            <option key={type.value} value={type.value}>
+              {type.label}
+            </option>
+          ))}
         </select>
         <p className="text-gray-900 text-sm block p-2.5 dark:text-white">
           to
         </p>
-        <select value={outputFormat} onChange={(e) => setOutputFormat(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option value="jpeg">JPEG</option>
-          <option value="png">PNG</option>
-          <option value="svg">SVG</option>
-        </select>
+        <select
+            value={outputFormat}
+            onChange={(e) => setOutputFormat(e.target.value)}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+            {imageFileTypes.map((type) => (
+                <option key={type.value} value={type.value}>
+                    {type.label}
+                </option>
+            ))}
+        </select> 
       </div>
         
       <div id="image-editor" className='grid grid-cols-1 md:grid-cols-2 gap-4 p-4 pt-0' >
@@ -509,20 +533,20 @@ const ImageConverter: React.FC = () => {
 
               {activeTab === 'crop' && (
                   <div className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 `} role="tabpanel">
+                  {convertedImage ? (
                     <div>
                       <button onClick={handleCrop} className="mb-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Crop</button>
-                      {convertedImage && (
                       <Cropper src={convertedImage} ref={cropperRef} style={{ height: 400, width: '100%' }}
                         aspectRatio={1} guides={true} responsive={true} autoCrop={true}
                       />
-                      )}
                     </div>
-                    {/* {croppedImage && (
-                      <div>
-                        <h3>Cropped Image:</h3>
-                        <img src={croppedImage} alt="Cropped" style={{ maxWidth: '100%' }} />
-                      </div>
-                    )} */}
+                  ) : ( <p> Please upload a image !</p> )}
+                  {/* {croppedImage && (
+                    <div>
+                      <h3>Cropped Image:</h3>
+                      <img src={croppedImage} alt="Cropped" style={{ maxWidth: '100%' }} />
+                    </div>
+                  )} */}
                   </div>
               )}
                 

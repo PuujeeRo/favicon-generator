@@ -10,6 +10,7 @@ import { FaChevronDown, FaBalanceScale, FaLock, FaServer, FaUserTag} from "react
 import { LuActivity } from "react-icons/lu";
 import { IoIosFlash } from "react-icons/io";
 import { TbFavicon, TbFileTypeSvg, TbFileTypeJpg, TbFileTypePng, } from "react-icons/tb";
+import { IoMdImages } from "react-icons/io";
 
 export default function MenuBar() {
     // const [isClient, setIsClient] = useState(false);
@@ -55,6 +56,7 @@ export default function MenuBar() {
         svg: <TbFileTypeSvg className="text-secondary" size={30} />,
         jpg: <TbFileTypeJpg className="text-info" size={30} />,
         png: <TbFileTypePng className="text-success" size={30} />,
+        img: <IoMdImages className="text-success" size={30} />,
     };
 
     return (
@@ -99,12 +101,18 @@ export default function MenuBar() {
                         className="max-h-[500px] overflow-y-auto" // 5 columns with a fixed width for alignment
                     >
                         <DropdownItem startContent={icons.favicon} textValue="favicon-converter">
-                        <Link href="/favicon-converter" passHref color="warning">
-                            Favicon Converter
-                        </Link>
+                            <Link href="/favicon-converter" passHref color="warning">
+                                Favicon Converter
+                            </Link> 
                         </DropdownItem>
 
-                        <DropdownItem startContent={icons.svg} textValue="PNG to SVG Converter">
+                        <DropdownItem startContent={icons.img} textValue="favicon-converter">
+                            <Link href="/image-converter" passHref color="warning">
+                                Image Converter
+                            </Link>
+                        </DropdownItem>
+
+                        {/* <DropdownItem startContent={icons.svg} textValue="PNG to SVG Converter">
                         <Link href="/SVG-to-PNG" passHref color="warning">
                         Convert to SVG 
                         </Link>
@@ -126,7 +134,7 @@ export default function MenuBar() {
                         <Link href="/JPG-to-WebP" passHref color="info">
                             Convert to WebP
                         </Link>
-                        </DropdownItem>
+                        </DropdownItem> */}
 
                         {/* {[...Array(25)].map((_, index) => (
                         <DropdownItem
