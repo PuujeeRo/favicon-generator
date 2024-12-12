@@ -69,7 +69,7 @@ export default function MenuBar() {
                 <NavbarContent className="sm:hidden pr-3" justify="center">
                     <NavbarBrand>
                     {/* <AcmeLogo /> */}
-                    <p className="font-bold text-inherit">ACME</p>
+                    <p className="font-bold text-inherit">HOME</p>
                     </NavbarBrand>
                 </NavbarContent>
 
@@ -77,7 +77,7 @@ export default function MenuBar() {
                     <NavbarBrand>
                     {/* <AcmeLogo /> */}
                     <Link href="/">      
-                        <p className="font-bold text-inherit">FAVI</p>
+                        <p className="font-bold text-inherit">HOME</p>
                     </Link>
                     </NavbarBrand>
 
@@ -148,11 +148,11 @@ export default function MenuBar() {
                     </DropdownMenu>
                     </Dropdown>
 
-                    <NavbarItem isActive>
-                    <Link href="#" aria-current="page" color="warning">
-                        Generator
-                    </Link>
-                    </NavbarItem>
+                    {/* <NavbarItem isActive>
+                        <Link href="#" aria-current="page" color="warning">
+                            Generator
+                        </Link>
+                    </NavbarItem> */}
                     
                     <Dropdown>
                     <NavbarItem>
@@ -168,49 +168,49 @@ export default function MenuBar() {
                         </Button>
                         </DropdownTrigger>
                     </NavbarItem>
-                    <DropdownMenu
-                        aria-label="ACME features"
-                        className="max-w-[340px] max-h-[500px] overflow-y-auto"
-                        itemClasses={{
-                        base: "gap-4",
-                        }}
-                    >
-                        <DropdownItem
-                        key="autoscaling"
-                        description="ACME scales apps to meet user demand, automagically, based on load."
-                        startContent={icons.scale}
+                        <DropdownMenu
+                            aria-label="ACME features"
+                            className="max-w-[340px] max-h-[500px] overflow-y-auto"
+                            itemClasses={{
+                            base: "gap-4",
+                            }}
                         >
-                        Autoscaling
-                        </DropdownItem>
-                        <DropdownItem
-                        key="usage_metrics"
-                        description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
-                        startContent={icons.activity}
-                        >
-                        Usage Metrics
-                        </DropdownItem>
-                        <DropdownItem
-                        key="production_ready"
-                        description="ACME runs on ACME, join us and others serving requests at web scale."
-                        startContent={icons.flash}
-                        >
-                        Production Ready
-                        </DropdownItem>
-                        <DropdownItem
-                        key="99_uptime"
-                        description="Applications stay on the grid with high availability and high uptime guarantees."
-                        startContent={icons.server}
-                        >
-                        +99% Uptime
-                        </DropdownItem>
-                        <DropdownItem
-                        key="supreme_support"
-                        description="Overcome any challenge with a supporting team ready to respond."
-                        startContent={icons.user}
-                        >
-                        +Supreme Support
-                        </DropdownItem>
-                    </DropdownMenu>
+                                <DropdownItem
+                                key="autoscaling"
+                                description="ACME scales apps to meet user demand, automagically, based on load."
+                                startContent={icons.scale}
+                                >
+                                Autoscaling
+                            </DropdownItem>
+                            <DropdownItem
+                            key="usage_metrics"
+                            description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
+                            startContent={icons.activity}
+                            >
+                            Usage Metrics
+                            </DropdownItem>
+                            <DropdownItem
+                            key="production_ready"
+                            description="ACME runs on ACME, join us and others serving requests at web scale."
+                            startContent={icons.flash}
+                            >
+                            Production Ready
+                            </DropdownItem>
+                            <DropdownItem
+                            key="99_uptime"
+                            description="Applications stay on the grid with high availability and high uptime guarantees."
+                            startContent={icons.server}
+                            >
+                            +99% Uptime
+                            </DropdownItem>
+                            <DropdownItem
+                                key="supreme_support"
+                                description="Overcome any challenge with a supporting team ready to respond."
+                                startContent={icons.user}
+                                >
+                                +Supreme Support
+                            </DropdownItem>
+                        </DropdownMenu>
                     </Dropdown> 
 
                     <Dropdown>
@@ -235,11 +235,11 @@ export default function MenuBar() {
                         }}
                     >
                         <DropdownItem
-                        key="autoscaling"
-                        description="ACME scales apps to meet user demand, automagically, based on load."
-                        startContent={icons.scale}
-                        >
-                        Autoscaling
+                            key="autoscaling"
+                            description="ACME scales apps to meet user demand, automagically, based on load."
+                            startContent={icons.scale}
+                            >
+                            Autoscaling
                         </DropdownItem>
                         <DropdownItem
                         key="usage_metrics"

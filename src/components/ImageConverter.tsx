@@ -73,6 +73,8 @@ const ImageConverter: React.FC = () => {
       } else {
         setError(null); // Clear any previous errors
       }
+      const fileType = file.type.split('/')[1]; // Extract format after 'image/'
+      setInputFormat(fileType);
       
       const fileUrl = URL.createObjectURL(file);
       const img = new Image();
@@ -436,9 +438,11 @@ const ImageConverter: React.FC = () => {
               Download {outputFormat.toUpperCase()} 
             </button>
           </div>
-
-          <img src={convertedImage} alt="Converted" className='mx-auto mt-2'
-            style={{ maxWidth: '100%', maxHeight: '475px' }} />
+          
+          <div className='flex justify-center items-center mx-auto mt-2 bg-gray-50 dark:bg-gray-800 rounded-lg' style={{ maxWidth: '100%', maxHeight: '475px', minHeight: '300px', }}>
+            <img src={convertedImage} alt="Converted" className='mx-auto mt-2 shadow bg-gray-50 dark:bg-gray-800'
+              style={{ maxWidth: '100%', maxHeight: '475px', }} />
+          </div>
           
           {/* {activeTab === 'crop' && (
             <div>
@@ -452,7 +456,7 @@ const ImageConverter: React.FC = () => {
         )}
 
         <div className="">
-          <div className="mb-2 border-b border-gray-200 dark:border-gray-700">
+          <div className="mb-3 border-b border-gray-200 dark:border-gray-700">
             <ul className="flex flex-wrap -mb-px text-sm font-medium text-center" role="tablist">
               <li className="me-2">
                 <button className={`inline-flex items-center justify-center p-3 border-b-2 rounded-t-lg ${activeTab === 'resize' ? 'text-purple-600 border-purple-600' : 'text-gray-500 border-transparent hover:text-gray-600 hover:border-gray-300'}`}
@@ -479,56 +483,52 @@ const ImageConverter: React.FC = () => {
           </div>
 
           <div>
-            <div className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === 'resize' ? 'block' : 'hidden'}`} role="tabpanel">
-                  <div>
-                    <div className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === 'resize' ? 'block' : 'hidden'}`} role="tabpanel">
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
-                        Resize Image
-                      </p>
-                      <div className="flex flex-wrap gap-4">
-                        <div className="w-full sm:w-auto space-x-4">
-                          <label htmlFor="resizeWidth" className="mb-1">Width:</label>
-                          <input
-                            id="resizeWidth"
-                            name="resizeWidth"
-                            type="number"
-                            placeholder="Width"
-                            value={resizeWidth || ''}
-                            onChange={(e) => handleResizeWidthChange(Number(e.target.value))}
-                            className="border p-2 rounded max-w-[150px]"
-                          />
-                          <span className='ml-1'>px</span>
-                        </div>
+            <div className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === 'resize' ? 'block' : 'hidden'}`} role="tabpanel" 
+              style={{ maxWidth: '100%', maxHeight: '475px', minHeight: '300px', }}>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Resize Image
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <div className="w-full sm:w-auto space-x-4">
+                  <label htmlFor="resizeWidth" className="mb-1">Width:</label>
+                  <input
+                    id="resizeWidth"
+                    name="resizeWidth"
+                    type="number"
+                    placeholder="Width"
+                    value={resizeWidth || ''}
+                    onChange={(e) => handleResizeWidthChange(Number(e.target.value))}
+                    className="border p-2 rounded max-w-[150px]"
+                  />
+                  <span className='ml-1'>px</span>
+                </div>
 
-                        <div className="w-full sm:w-auto space-x-4">
-                          <label htmlFor="resizeHeight" className="mb-1">Height:</label>
-                          <input
-                            id="resizeHeight"
-                            name="resizeHeight"
-                            type="number"
-                            placeholder="Height"
-                            value={resizeHeight || ''}
-                            onChange={(e) => handleResizeHeightChange(Number(e.target.value))}
-                            className="border p-2 rounded max-w-[150px]"
-                          />
-                          <span className='ml-1'>px</span>
-                        </div>
-                      </div>
+                <div className="w-full sm:w-auto space-x-4">
+                  <label htmlFor="resizeHeight" className="mb-1">Height:</label>
+                  <input
+                    id="resizeHeight"
+                    name="resizeHeight"
+                    type="number"
+                    placeholder="Height"
+                    value={resizeHeight || ''}
+                    onChange={(e) => handleResizeHeightChange(Number(e.target.value))}
+                    className="border p-2 rounded max-w-[150px]"
+                  />
+                  <span className='ml-1'>px</span>
+                </div>
+              </div>
+              <div className="flex space-x-4 items-center">
+                <div>
+                  <button onClick={handleResize} className="mt-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                    Apply Resize
+                  </button>
 
-                      <div className="flex space-x-4 items-center">
-                        <div>
-                          <button onClick={handleResize} className="mt-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-                            Apply Resize
-                          </button>
-
-                          <label htmlFor="aspectRatio" style={{ cursor: 'pointer' }} className='ml-4'>
-                            <input type="checkbox" id="aspectRatio" name="aspectRatio" className='ml-1' checked={isAspectRatioLocked} onChange={() => toggleAspectRatioLock()} />
-                            Lock Aspect Ratio
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <label htmlFor="aspectRatio" style={{ cursor: 'pointer' }} className='ml-4'>
+                    <input type="checkbox" id="aspectRatio" name="aspectRatio" className='ml-1' checked={isAspectRatioLocked} onChange={() => toggleAspectRatioLock()} />
+                    Lock Aspect Ratio
+                  </label>
+                </div>
+              </div>
             </div>
 
               {activeTab === 'crop' && (
@@ -550,7 +550,8 @@ const ImageConverter: React.FC = () => {
                   </div>
               )}
                 
-              <div className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 grid grid-cols-2 gap-4 ${activeTab === 'rotate' ? 'block' : 'hidden'}`} role="tabpanel">
+              <div className={`p-4 rounded-lg bg-gray-50 dark:bg-gray-800 grid grid-cols-2 gap-4 ${activeTab === 'rotate' ? 'block' : 'hidden'}`} role="tabpanel"
+                style={{maxHeight: '475px', }}>
                   <div>
                     <div className="text-center w-full" onClick={handleFlipHorizontal}>
                       <div className="dark:bg-darkSurface-200 cursor-pointer w-full flex items-center justify-center rounded-2xl border-slate-200 dark:border-darkSurface-400 border py-8 my-2">
