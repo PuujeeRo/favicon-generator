@@ -271,6 +271,9 @@ export default function Page() {
 
           <h3 className="text-xl font-extrabold dark:text-white mt-6 mb-1">Link Tags for Including Favicons in HTML</h3>
           <p className="text-gray-500 dark:text-gray-400">To include these favicons in your HTML <code>{`<head>`}</code>, add the following:</p>
+          <button onClick={handleCopyClick} className="mb-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+            { copyText ? copyText : 'Copy' } 
+          </button>
           <pre className="p-2 shadow-md rounded-lg overflow-hidden dark:bg-gray-800">
             <code id="faviconCode" className="language-html text-gray-500 dark:text-gray-400">
             {`<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">\n`}
@@ -285,9 +288,6 @@ export default function Page() {
             &nbsp;{`<link rel="manifest" href="/site.webmanifest">`}
             </code>
           </pre>
-          <button onClick={handleCopyClick} className="mt-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-            { copyText ? copyText : 'Copy' } 
-          </button>
 
           <h3 className="text-xl font-extrabold dark:text-white mt-6 mb-1">Apple Touch Icon</h3>
           <p className="text-gray-500 dark:text-gray-400">For iOS devices, specify the  <code>{`apple-touch-icon`}</code> to ensure the icon displays correctly on bookmarks:</p>

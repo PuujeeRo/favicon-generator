@@ -13,6 +13,7 @@
     "@nextui-org/react": "^2.4.8",
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/theme": "^2.2.11",
+    "@vercel/analytics": "^1.4.1",
     "autotrace": "^0.0.2",
     "cropperjs": "^1.6.2",
     "formidable": "^3.5.2",

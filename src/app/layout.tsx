@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"
 
 import { ThemeProvider } from "@/components/Theme-provider"
 
@@ -44,6 +45,7 @@ export default function RootLayout({
           <MenuBar />
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
